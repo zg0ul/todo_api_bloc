@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_api_bloc/api/todo_api.dart';
+import 'package:todo_api_bloc/bloc/todos_bloc.dart';
 import 'package:todo_api_bloc/pages/todos_page.dart';
 
 void main() {
@@ -10,10 +13,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Todo App with Api',
-      home: TodosPage(),
+    return BlocProvider(
+      create: (context) =>
+          TodosBloc(todosApi: TodosApi())..add(GetAllTodosEvent()),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Todo App with Api',
+        home: TodosPage(),
+      ),
     );
   }
 }

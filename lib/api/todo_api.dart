@@ -3,7 +3,7 @@ import 'package:todo_api_bloc/models/todo.dart';
 import 'package:http/http.dart' as http;
 
 class TodosApi {
-  Future<List<Todo>> getTodos() async {
+  Future<List<Todo>> getAllTodos() async {
     try {
       const String url = 'https://jsonplaceholder.typicode.com/todos';
 
